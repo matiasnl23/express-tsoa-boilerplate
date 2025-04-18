@@ -1,5 +1,7 @@
+import config from "./config";
+
 const greetings = () => {
-  console.log("Hello, world!");
+  console.log(config);
 };
 
 greetings();

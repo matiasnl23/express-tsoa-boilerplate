@@ -1,0 +1,14 @@
+{
+  "env": "development",
+  "port": 3000,
+  "db": {
+    "host": "localhost",
+    "user": "root",
+    "pass": "default",
+    "port": 3306
+  },
+  "debug": {
+    "enabled": true,
+    "level": "error"
+  }
+}

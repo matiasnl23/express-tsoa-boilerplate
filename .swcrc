@@ -3,12 +3,12 @@
     "parser": {
       "syntax": "typescript",
       "tsx": false,
-      "decorators": false
+      "decorators": true
     },
     "target": "es2022",
     "transform": {
-      "legacyDecorator": false,
-      "decoratorMetadata": false
+      "legacyDecorator": true,
+      "decoratorMetadata": true
     }
   },
   "module": {

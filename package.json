@@ -19,7 +19,11 @@
     "@swc/cli": "^0.7.3",
     "@swc/core": "^1.11.21",
     "@types/convict": "^6.1.6",
+    "@types/express": "^5.0.1",
     "@types/node": "^22.14.1",
+    "@types/pg": "^8.11.13",
+    "@types/swagger-jsdoc": "^6",
+    "@types/swagger-ui-express": "^4.1.8",
     "chokidar": "^4.0.3",
     "pino-pretty": "^13.0.0",
     "rimraf": "^6.0.1",
@@ -29,6 +33,15 @@
   "dependencies": {
     "convict": "^6.2.4",
     "dotenv": "^16.5.0",
-    "pino": "^9.6.0"
+    "express": "^5.1.0",
+    "pg": "^8.14.1",
+    "pg-hstore": "^2.3.4",
+    "pino": "^9.6.0",
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "umzug": "^3.8.2"
   }
 }

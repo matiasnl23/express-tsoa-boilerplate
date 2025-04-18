@@ -9,6 +9,6 @@
   },
   "log": {
     "enabled": true,
-    "level": "info"
+    "level": "debug"
   }
 }

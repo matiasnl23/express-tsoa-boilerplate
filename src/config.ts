@@ -41,6 +41,24 @@ const config = convict({
       default: 3306,
       env: "DB_PORT",
     },
+    database: {
+      doc: "Database name",
+      format: String,
+      default: "default",
+      env: "DB_NAME",
+    },
+    dialect: {
+      doc: "Database dialect",
+      format: ["mysql", "postgres", "sqlite"],
+      default: "postgres",
+      env: "DB_DIALECT",
+    },
+    ssl: {
+      doc: "Use SSL for database connection",
+      format: Boolean,
+      default: false,
+      env: "DB_SSL",
+    },
   },
   log: {
     enabled: {

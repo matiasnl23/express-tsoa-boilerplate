@@ -1,5 +1,9 @@
+import express from "express";
 import config from "./config";
+import { sequelize } from "./db";
 import logger from "./logger";
+import router from "./routes";
+import { setupSwagger } from "./swagger";
 
 process.on("uncaughtException", (err) => {
   logger.fatal({ err }, "Uncaught Exception");
@@ -10,8 +14,20 @@ process.on("unhandledRejection", (reason) => {
   logger.error({ reason }, "Unhandled Rejection");
 });
 
-const greetings = () => {
-  logger.info(config);
+const main = async () => {
+  await sequelize.authenticate();
+  logger.info("Database connection has been established successfully.");
+
+  const app = express();
+  app.use(express.json());
+
+  setupSwagger(app);
+
+  app.use("/api", router);
+
+  app.listen(config.port, () => {
+    logger.info(`Server is running on port ${config.port}`);
+  });
 };
 
-greetings();
+main();

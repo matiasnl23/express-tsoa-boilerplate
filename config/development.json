@@ -7,7 +7,7 @@
     "pass": "default",
     "port": 3306
   },
-  "debug": {
+  "log": {
     "enabled": true,
     "level": "info"
   }

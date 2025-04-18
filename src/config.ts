@@ -42,7 +42,7 @@ const config = convict({
       env: "DB_PORT",
     },
   },
-  debug: {
+  log: {
     enabled: {
       doc: "Enable debug mode",
       format: Boolean,
@@ -51,7 +51,7 @@ const config = convict({
     },
     level: {
       doc: "Debug level",
-      format: ["error", "warn", "info", "debug"],
+      format: ["fatal", "error", "warn", "info", "debug", "trace"],
       default: "info",
       env: "DEBUG_LEVEL",
     },

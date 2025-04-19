@@ -1,7 +1,20 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import {
+  Column,
+  DataType,
+  DefaultScope,
+  Model,
+  Table,
+} from "sequelize-typescript";
+import { UserAttributes, UserCreationAttributes } from "../types/user";
 
-@Table({ tableName: "users", timestamps: true })
-export class User extends Model<User> {
+@DefaultScope(() => ({
+  attributes: { exclude: ["password"] },
+  where: {
+    deletedAt: null,
+  },
+}))
+@Table({ tableName: "users", timestamps: true, paranoid: true })
+export class User extends Model<UserAttributes, UserCreationAttributes> {
   @Column({
     type: DataType.UUID,
     defaultValue: DataType.UUIDV4,
@@ -14,7 +27,13 @@ export class User extends Model<User> {
     type: DataType.STRING,
     allowNull: false,
   })
-  name!: string;
+  firstName!: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  lastName!: string;
 
   @Column({
     type: DataType.STRING,
@@ -22,4 +41,16 @@ export class User extends Model<User> {
     unique: true,
   })
   email!: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  password!: string;
+
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: false,
+  })
+  disabled!: boolean;
 }

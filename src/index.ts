@@ -4,6 +4,7 @@ import { sequelize } from "./db";
 import logger from "./logger";
 import { RegisterRoutes } from "./routes";
 import { setupSwagger } from "./swagger";
+import errorHandlerMiddleware from "./middleware/error-handler";
 
 process.on("uncaughtException", (err) => {
   logger.fatal({ err }, "Uncaught Exception");
@@ -24,6 +25,8 @@ const main = async () => {
 
   RegisterRoutes(app);
   setupSwagger(app);
+
+  app.use(errorHandlerMiddleware);
 
   app.listen(config.port, () => {
     logger.info(`Server is running on port ${config.port}`);

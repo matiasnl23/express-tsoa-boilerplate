@@ -1,8 +1,8 @@
+import path from "path";
+import { Dialect } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 import config from "./config";
-import path from "path";
 import logger from "./logger";
-import { Dialect } from "sequelize";
 
 const dialectOptions: any = {};
 

@@ -1,8 +1,8 @@
-import express from "express";
+import express, { json, urlencoded } from "express";
 import config from "./config";
 import { sequelize } from "./db";
 import logger from "./logger";
-import router from "./routes";
+import { RegisterRoutes } from "./routes";
 import { setupSwagger } from "./swagger";
 
 process.on("uncaughtException", (err) => {
@@ -19,11 +19,11 @@ const main = async () => {
   logger.info("Database connection has been established successfully.");
 
   const app = express();
-  app.use(express.json());
+  app.use(urlencoded({ extended: true }));
+  app.use(json());
 
+  RegisterRoutes(app);
   setupSwagger(app);
-
-  app.use("/api", router);
 
   app.listen(config.port, () => {
     logger.info(`Server is running on port ${config.port}`);

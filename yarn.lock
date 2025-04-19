@@ -3967,6 +3967,7 @@ __metadata:
     sequelize-typescript: "npm:^2.1.6"
     swagger-jsdoc: "npm:^6.2.8"
     swagger-ui-express: "npm:^5.0.1"
+    ts-node: "npm:^10.9.2"
     ts-node-dev: "npm:^2.0.0"
     tsoa: "npm:^6.6.0"
     typescript: "npm:^5.8.3"
@@ -5480,7 +5481,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.4.0":
+"ts-node@npm:^10.4.0, ts-node@npm:^10.9.2":
   version: 10.9.2
   resolution: "ts-node@npm:10.9.2"
   dependencies:

@@ -1,26 +1,13 @@
 import "ts-node/register";
 import { SequelizeStorage, Umzug } from "umzug";
-import { Dialect, Sequelize } from "sequelize";
-import config from "./config";
+import { sequelize } from "./db";
 import logger from "./logger";
+import path from "path";
 
-const dialectOptions: any = {};
-if (config.db.ssl) {
-  dialectOptions.ssl = {
-    require: true,
-  };
-}
-
-const sequelize = new Sequelize({
-  host: config.db.host,
-  port: config.db.port,
-  username: config.db.user,
-  password: config.db.pass,
-  database: config.db.database,
-  dialect: config.db.dialect as Dialect,
-  dialectOptions,
-  // logging: (msg) => logger.debug(msg),
-});
+const isTs = path.extname(__filename) === ".ts";
+const migrationsPath = isTs
+  ? path.join(__dirname, "migrations", "*.ts")
+  : path.join(__dirname, "migrations", "*.js");
 
 const umzug = new Umzug({
   migrations: {

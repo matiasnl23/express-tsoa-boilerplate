@@ -1,8 +1,9 @@
 import type { Migration } from "../migrations";
 import { DataTypes } from "sequelize";
+import { User } from "../models/User";
 
 export const up: Migration = async ({ context: queryInterface }) => {
-  queryInterface.createTable("users", {
+  await queryInterface.createTable("users", {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -30,17 +31,24 @@ export const up: Migration = async ({ context: queryInterface }) => {
       defaultValue: false,
     },
     createdAt: {
-      type: DataTypes.TIME,
+      type: DataTypes.DATE,
       defaultValue: queryInterface.sequelize.fn("NOW"),
     },
     updatedAt: {
-      type: DataTypes.TIME,
+      type: DataTypes.DATE,
       defaultValue: queryInterface.sequelize.fn("NOW"),
     },
     deletedAt: {
-      type: DataTypes.TIME,
+      type: DataTypes.DATE,
       allowNull: true,
     },
+  });
+
+  await User.create({
+    firstName: "Admin",
+    lastName: "User",
+    email: "admin@store.com",
+    password: "1234",
   });
 };
 
